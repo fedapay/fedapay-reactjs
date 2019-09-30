@@ -1,7 +1,7 @@
 # fedacheckout-react
 
 > 
--The lib is inside "dist" folder
+-The lib is inside "dist" folder  
 -A test project is in "example" folder
 
 
