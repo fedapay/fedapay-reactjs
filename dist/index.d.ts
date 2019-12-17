@@ -1,20 +1,16 @@
-/**
- * @class FedaCheckoutComponent
- */
 import * as React from 'react';
-export declare type Props = {
-    data_public_key: string;
-    data_transaction_amount: string;
-    data_transaction_description: string;
-    data_currency_iso: string;
-    data_button_text?: string;
-    data_button_class?: string;
-    data_widget_description?: string;
-    data_widget_image?: string;
-    data_widget_title?: string;
-    compte_type?: string;
-};
-export default class FedaCheckoutComponent extends React.Component<Props> {
-    componentDidMount(): void;
-    render(): JSX.Element;
+import { CheckoutOptions } from './checkout-options';
+/**
+ * @class FedaPayCheckoutComponent
+ */
+interface Props {
+    fedaCheckoutOptions: CheckoutOptions;
+    embeded: boolean;
 }
+export default class FedaPayCheckoutComponent extends React.Component<Props> {
+    childElement: any;
+    componentDidMount(): void;
+    initFedaPay(): void;
+    render(): React.ReactNode;
+}
+export {};

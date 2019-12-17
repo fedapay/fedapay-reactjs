@@ -1,4 +1,3 @@
-import './src/style.scss';
-import FedaCheckoutComponent from './src/index';
+import FedaPayCheckoutComponent from './src/index';
 
-export default FedaCheckoutComponent;
+export default FedaPayCheckoutComponent;

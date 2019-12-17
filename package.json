@@ -1,10 +1,10 @@
 {
-  "name": "fedacheckout-react",
+  "name": "fedapay-react",
   "version": "1.0.0",
   "description": "",
-  "author": "Nautilus Technology",
+  "author": "FedaPay",
   "license": "MIT",
-  "repository": "/fedacheckout-react",
+  "repository": "/fedapay-react",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -15,13 +15,15 @@
   "scripts": {
     "test": "cross-env CI=1 react-scripts-ts test --env=jsdom",
     "test:watch": "react-scripts-ts test --env=jsdom",
-    "build": "rollup -c",
+    "build": "rollup -c && npm run copy",
     "start": "rollup -c -w",
+    "copy": "node src/tools/copy-package.js",
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
     "node-sass": "^4.12.0"
   },
   "peerDependencies": {
