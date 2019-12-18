@@ -10,7 +10,13 @@ interface Props {
 }
 export default class FedaPayCheckoutComponent extends React.Component<Props> {
 
-  childElement: any;
+  buttonRef: any;
+
+  constructor(props: Props) {
+    super(props);
+    this.buttonRef=React.createRef();
+
+  }
 
   componentDidMount(){
     if (typeof window['FedaPay'] === 'undefined') {
@@ -27,26 +33,15 @@ export default class FedaPayCheckoutComponent extends React.Component<Props> {
   initFedaPay() {
     const FedaPay = window['FedaPay'];
 
-    if (this.props.children instanceof Array || !this.props.children) {
-      console.error('Exactly one Element should be included as FedaPayCheckoutComponent child !');
+    if (this.props.embeded) {
+      //this.props.fedaCheckoutOptions.container = this.props.container;
+      FedaPay.init(this.props.fedaCheckoutOptions);
     } else {
-      this.childElement = this.props.children;
-
-      if (!this.childElement.props.id) {
-        throw new Error('The child Element should have an id');
-      }
-
-      const childElementId = `#${this.childElement.props.id}`;
-      if (this.props.embeded) {
-          this.props.fedaCheckoutOptions.container = childElementId;
-          FedaPay.init(this.props.fedaCheckoutOptions);
-      } else {
-        FedaPay.init(childElementId, this.props.fedaCheckoutOptions);
-      }
+      FedaPay.init(this.buttonRef, this.props.fedaCheckoutOptions);
     }
   }
 
   render() {
-    return (this.props.children)
+    return ( !this.props.embeded? <button ref={el=> this.buttonRef = el}>Click</button> : '' )
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { createRef, createElement, Component } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -31,8 +31,10 @@ function __extends(d, b) {
 
 var FedaPayCheckoutComponent = /** @class */ (function (_super) {
     __extends(FedaPayCheckoutComponent, _super);
-    function FedaPayCheckoutComponent() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function FedaPayCheckoutComponent(props) {
+        var _this = _super.call(this, props) || this;
+        _this.buttonRef = createRef();
+        return _this;
     }
     FedaPayCheckoutComponent.prototype.componentDidMount = function () {
         if (typeof window['FedaPay'] === 'undefined') {
@@ -49,26 +51,17 @@ var FedaPayCheckoutComponent = /** @class */ (function (_super) {
     };
     FedaPayCheckoutComponent.prototype.initFedaPay = function () {
         var FedaPay = window['FedaPay'];
-        if (this.props.children instanceof Array || !this.props.children) {
-            console.error('Exactly one Element should be included as FedaPayCheckoutComponent child !');
+        if (this.props.embeded) {
+            //this.props.fedaCheckoutOptions.container = this.props.container;
+            FedaPay.init(this.props.fedaCheckoutOptions);
         }
         else {
-            this.childElement = this.props.children;
-            if (!this.childElement.props.id) {
-                throw new Error('The child Element should have an id');
-            }
-            var childElementId = "#" + this.childElement.props.id;
-            if (this.props.embeded) {
-                this.props.fedaCheckoutOptions.container = childElementId;
-                FedaPay.init(this.props.fedaCheckoutOptions);
-            }
-            else {
-                FedaPay.init(childElementId, this.props.fedaCheckoutOptions);
-            }
+            FedaPay.init(this.buttonRef, this.props.fedaCheckoutOptions);
         }
     };
     FedaPayCheckoutComponent.prototype.render = function () {
-        return (this.props.children);
+        var _this = this;
+        return (!this.props.embeded ? createElement("button", { ref: function (el) { return _this.buttonRef = el; } }, "Click") : '');
     };
     return FedaPayCheckoutComponent;
 }(Component));

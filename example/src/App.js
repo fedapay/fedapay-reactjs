@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-
 import FedaPayCheckoutComponent from 'fedapay-react'
-
 
 export default class App extends Component {
 
@@ -38,18 +36,19 @@ export default class App extends Component {
         },
         currency: {
             iso: 'XOF'
-        }
+        },
+        container: '#container_id'
     };
   render () {
     return (
       <div>
-        <FedaPayCheckoutComponent fedaCheckoutOptions={this.checkoutButtonOptions}>
-            <button id="btn_id"> Click on me </button>
-         </FedaPayCheckoutComponent>
+        <FedaPayCheckoutComponent fedaCheckoutOptions={this.checkoutButtonOptions} />
 
-         <FedaPayCheckoutComponent fedaCheckoutOptions={this.checkoutEmbedOptions} embeded="true">
-            <div style={{height : 500, width: 500, backgroundColor: '#eee'}} id="container_id"></div>
-         </FedaPayCheckoutComponent>
+        <div style={{height : 500, width: 500, backgroundColor: '#eee'}} id="container_id"></div>
+        <FedaPayCheckoutComponent
+          fedaCheckoutOptions={this.checkoutEmbedOptions}
+          embeded="true"
+        />
       </div>
     )
   }

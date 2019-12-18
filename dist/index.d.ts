@@ -8,9 +8,10 @@ interface Props {
     embeded: boolean;
 }
 export default class FedaPayCheckoutComponent extends React.Component<Props> {
-    childElement: any;
+    buttonRef: any;
+    constructor(props: Props);
     componentDidMount(): void;
     initFedaPay(): void;
-    render(): React.ReactNode;
+    render(): JSX.Element | "";
 }
 export {};
