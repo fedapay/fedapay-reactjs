@@ -3,7 +3,7 @@ import {FedaCheckoutButton, FedaCheckoutContainer} from 'fedapay-react'
 
 export default class App extends Component {
 
-  PUBLIC_KEY = 'pk_sandbox_any5haoJcTgH3ja2EkCbsfam';
+  PUBLIC_KEY = 'pk_sandbox_XXXXXX';
 
   checkoutButtonOptions = {
         public_key: this.PUBLIC_KEY,

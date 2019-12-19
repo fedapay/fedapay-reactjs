@@ -29,42 +29,90 @@ function __extends(d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
 
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
 var FedaPayCheckoutComponent = /** @class */ (function (_super) {
     __extends(FedaPayCheckoutComponent, _super);
-    function FedaPayCheckoutComponent(props) {
+    function FedaPayCheckoutComponent() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    FedaPayCheckoutComponent.prototype.componentDidMount = function () {
+        if (typeof window['FedaPay'] === 'undefined') {
+            throw new Error('checkout.js script need to be included!');
+        }
+    };
+    return FedaPayCheckoutComponent;
+}(Component));
+//# sourceMappingURL=index.js.map
+
+/**
+ * @class FedaPayCheckoutComponent
+ */
+var FedaCheckoutButton = /** @class */ (function (_super) {
+    __extends(FedaCheckoutButton, _super);
+    function FedaCheckoutButton(props) {
         var _this = _super.call(this, props) || this;
         _this.buttonRef = createRef();
         return _this;
     }
-    FedaPayCheckoutComponent.prototype.componentDidMount = function () {
-        if (typeof window['FedaPay'] === 'undefined') {
-            console.error('checkout.js script need to be included!');
+    FedaCheckoutButton.prototype.componentDidMount = function () {
+        try {
+            this.initFedaPay();
         }
-        else {
-            try {
-                this.initFedaPay();
-            }
-            catch (e) {
-                console.error(e);
-            }
+        catch (e) {
+            console.error(e);
         }
     };
-    FedaPayCheckoutComponent.prototype.initFedaPay = function () {
+    FedaCheckoutButton.prototype.initFedaPay = function () {
         var FedaPay = window['FedaPay'];
-        if (this.props.embeded) {
-            //this.props.fedaCheckoutOptions.container = this.props.container;
-            FedaPay.init(this.props.fedaCheckoutOptions);
-        }
-        else {
-            FedaPay.init(this.buttonRef, this.props.fedaCheckoutOptions);
-        }
+        FedaPay.init(this.buttonRef, this.props.fedacheckoutoptions);
     };
-    FedaPayCheckoutComponent.prototype.render = function () {
+    FedaCheckoutButton.prototype.render = function () {
         var _this = this;
-        return (!this.props.embeded ? createElement("button", { ref: function (el) { return _this.buttonRef = el; } }, "Click") : '');
+        return (createElement("button", __assign({ ref: function (el) { return _this.buttonRef = el; } }, this.props), "Click"));
     };
-    return FedaPayCheckoutComponent;
-}(Component));
+    return FedaCheckoutButton;
+}(FedaPayCheckoutComponent));
+//# sourceMappingURL=FedaCheckoutButton.js.map
 
-export default FedaPayCheckoutComponent;
+/**
+ * @class FedaPayCheckoutComponent
+ */
+var FedaCheckoutContainer = /** @class */ (function (_super) {
+    __extends(FedaCheckoutContainer, _super);
+    function FedaCheckoutContainer(props) {
+        var _this = _super.call(this, props) || this;
+        _this.containerRef = createRef();
+        return _this;
+    }
+    FedaCheckoutContainer.prototype.componentDidMount = function () {
+        try {
+            this.initFedaPay();
+        }
+        catch (e) {
+            console.error(e);
+        }
+    };
+    FedaCheckoutContainer.prototype.initFedaPay = function () {
+        var FedaPay = window['FedaPay'];
+        this.props.fedacheckoutoptions.container = this.containerRef;
+        FedaPay.init(this.props.fedacheckoutoptions);
+    };
+    FedaCheckoutContainer.prototype.render = function () {
+        var _this = this;
+        return (createElement("div", __assign({ ref: function (el) { return _this.containerRef = el; } }, this.props)));
+    };
+    return FedaCheckoutContainer;
+}(FedaPayCheckoutComponent));
+
+export { FedaPayCheckoutComponent, FedaCheckoutButton, FedaCheckoutContainer };
 //# sourceMappingURL=index.es.js.map

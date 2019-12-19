@@ -35,12 +35,14 @@ Add the checkout.js script in your index.html file.
 
 ```JavaScript
 import React, { Component } from 'react'
-import FedaPayCheckoutComponent from 'fedapay-react'
+import {FedaCheckoutButton, FedaCheckoutContainer} from 'fedapay-react'
 
 export default class App extends Component {
 
+  PUBLIC_KEY = 'pk_sandbox_XXXXX';
+
   checkoutButtonOptions = {
-        public_key: 'pk_sandbox_any5haoJcTgH3ja2EkCbsfam',
+        public_key: this.PUBLIC_KEY,
         transaction: {
             amount: 100,
             description: 'Airtime'
@@ -65,7 +67,7 @@ export default class App extends Component {
     };
 
     checkoutEmbedOptions = {
-        public_key: 'pk_sandbox_any5haoJcTgH3ja2EkCbsfam',
+        public_key: this.PUBLIC_KEY,
         transaction: {
             amount: 100,
             description: 'Airtime'
@@ -77,13 +79,12 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <FedaPayCheckoutComponent fedaCheckoutOptions={this.checkoutButtonOptions}>
-            <button id="btn_id"> Click on me </button>
-         </FedaPayCheckoutComponent>
+        <FedaCheckoutButton fedacheckoutoptions={this.checkoutButtonOptions} />
 
-         <FedaPayCheckoutComponent fedaCheckoutOptions={this.checkoutEmbedOptions} embeded="true">
-            <div style={{height : 500, width: 500, backgroundColor: '#eee'}} id="container_id"></div>
-         </FedaPayCheckoutComponent>
+        <FedaCheckoutContainer
+          fedacheckoutoptions={this.checkoutEmbedOptions}
+          style={{height : 500, width: 500, backgroundColor: '#eee'}}
+        />
       </div>
     )
   }

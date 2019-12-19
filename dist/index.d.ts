@@ -3,15 +3,9 @@ import { CheckoutOptions } from './checkout-options';
 /**
  * @class FedaPayCheckoutComponent
  */
-interface Props {
-    fedaCheckoutOptions: CheckoutOptions;
-    embeded: boolean;
+export interface CheckoutProps {
+    fedacheckoutoptions: CheckoutOptions;
 }
-export default class FedaPayCheckoutComponent extends React.Component<Props> {
-    buttonRef: any;
-    constructor(props: Props);
+export default class FedaPayCheckoutComponent extends React.Component<CheckoutProps> {
     componentDidMount(): void;
-    initFedaPay(): void;
-    render(): JSX.Element | "";
 }
-export {};
