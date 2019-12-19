@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import FedaPayCheckoutComponent from 'fedapay-react'
+import {FedaCheckoutButton, FedaCheckoutContainer} from 'fedapay-react'
 
 export default class App extends Component {
 
+  PUBLIC_KEY = 'pk_sandbox_any5haoJcTgH3ja2EkCbsfam';
+
   checkoutButtonOptions = {
-        public_key: 'pk_sandbox_any5haoJcTgH3ja2EkCbsfam',
+        public_key: this.PUBLIC_KEY,
         transaction: {
             amount: 100,
             description: 'Airtime'
@@ -29,25 +31,23 @@ export default class App extends Component {
     };
 
     checkoutEmbedOptions = {
-        public_key: 'pk_sandbox_any5haoJcTgH3ja2EkCbsfam',
+        public_key: this.PUBLIC_KEY,
         transaction: {
             amount: 100,
             description: 'Airtime'
         },
         currency: {
             iso: 'XOF'
-        },
-        container: '#container_id'
+        }
     };
   render () {
     return (
       <div>
-        <FedaPayCheckoutComponent fedaCheckoutOptions={this.checkoutButtonOptions} />
+        <FedaCheckoutButton fedacheckoutoptions={this.checkoutButtonOptions} />
 
-        <div style={{height : 500, width: 500, backgroundColor: '#eee'}} id="container_id"></div>
-        <FedaPayCheckoutComponent
-          fedaCheckoutOptions={this.checkoutEmbedOptions}
-          embeded="true"
+        <FedaCheckoutContainer
+          fedacheckoutoptions={this.checkoutEmbedOptions}
+          style={{height : 500, width: 500, backgroundColor: '#eee'}}
         />
       </div>
     )
