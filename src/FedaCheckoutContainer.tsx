@@ -10,13 +10,13 @@ export default class FedaCheckoutContainer extends FedaPayCheckoutComponent {
 
   constructor(props: CheckoutProps) {
     super(props);
-    this.containerRef=React.createRef();
+    this.containerRef = React.createRef();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     try {
       this.initFedaPay();
-    } catch(e){
+    } catch (e) {
       console.error(e);
     }
   }
@@ -30,8 +30,8 @@ export default class FedaCheckoutContainer extends FedaPayCheckoutComponent {
   render() {
     return (
       <div
-      ref={el=> this.containerRef = el}
-      {...this.props}
+        ref={el => this.containerRef = el}
+        {...this.props}
       ></div>
     )
   }

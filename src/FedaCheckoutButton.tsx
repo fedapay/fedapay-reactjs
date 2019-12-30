@@ -2,7 +2,7 @@ import * as React from 'react';
 import FedaPayCheckoutComponent, { CheckoutProps } from './index';
 
 /**
- * @class FedaPayCheckoutComponent
+ * @class FedaCheckoutButton
  */
 export default class FedaCheckoutButton extends FedaPayCheckoutComponent {
 
@@ -10,30 +10,27 @@ export default class FedaCheckoutButton extends FedaPayCheckoutComponent {
 
   constructor(props: CheckoutProps) {
     super(props);
-    this.buttonRef=React.createRef();
+    this.buttonRef = React.createRef();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     try {
       this.initFedaPay();
-    } catch(e){
+    } catch (e) {
       console.error(e);
     }
   }
 
   initFedaPay() {
-    const FedaPay = window['FedaPay'];
     FedaPay.init(this.buttonRef, this.props.fedacheckoutoptions);
   }
 
-
   render() {
-
     return (
       <button
-      ref={el=> this.buttonRef = el}
-      {...this.props}
-      >Click</button>
+        ref={el => this.buttonRef = el}
+        {...this.props}
+      >Click to Pay</button>
     )
   }
 }
