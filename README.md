@@ -26,7 +26,7 @@ Add the checkout.js script in your index.html file.
     </noscript>
 
     <div id="root"></div>
-    <!--- Load the FedaPay checkout.js --->
+    <!-- Load the FedaPay checkout.js -->
     <script src="https://cdn.fedapay.com/checkout.js?v=1.1.2"></script>
   </body>
 </html>
@@ -34,7 +34,7 @@ Add the checkout.js script in your index.html file.
 
 ## Usage
 
-```JavaScript
+```tsx
 import React, { Component } from 'react';
 import { FedaCheckoutButton, FedaCheckoutContainer } from 'fedapay-reactjs';
 
