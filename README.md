@@ -5,7 +5,7 @@ FedaPay CheckoutJs integration for React.js projects.
 ## Install
 From a command terminal type the following
 ```
-npm install fedapay-react --save
+npm install fedapay-reactjs --save
 ```
 
 
