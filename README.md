@@ -26,7 +26,7 @@ Add the checkout.js script in your index.html file.
     </noscript>
 
     <div id="root"></div>
-
+    <!--- Load the FedaPay checkout.js --->
     <script src="https://cdn.fedapay.com/checkout.js?v=1.1.2"></script>
   </body>
 </html>
