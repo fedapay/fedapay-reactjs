@@ -1,10 +1,10 @@
 {
-  "name": "fedapay-react",
+  "name": "fedapay-reactjs",
   "version": "1.0.0",
   "description": "FedaPay integration for ReactJs applications",
   "author": "FedaPay",
   "license": "MIT",
-  "repository": "/fedapay-reactjs",
+  "repository": "https://github.com/fedapay/fedapay-reactjs",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -17,8 +17,9 @@
     "start": "rollup -c -w",
     "copy": "node src/tools/copy-package.js",
     "prepare": "npm run build",
-    "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "link-lib": "npm link && cd example && npm link fedapay-reactjs",
+    "install-example": "cd example && npm install",
+    "start-example": "cd example && npm run start"
   },
   "dependencies": {
     "fs": "0.0.1-security",
