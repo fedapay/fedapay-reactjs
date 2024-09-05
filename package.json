@@ -12,7 +12,7 @@
 "node": ">=8",
 "npm": ">=5"
 },
-
+  
   "private": true,
   "dependencies": {
     "@svgr/rollup": "^8.1.0",
