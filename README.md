@@ -8,6 +8,15 @@ From a command terminal type the following
 npm install fedapay-reactjs --save
 ```
 
+npm install --global yarn
+```
+
+yarn
+```
+## Run
+yarn start
+```
+
 
 ## Add the CheckoutJs script
 Add the checkout.js script in your index.html file.
