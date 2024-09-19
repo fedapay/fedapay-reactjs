@@ -1,35 +1,53 @@
 {
   "name": "fedapay-reactjs",
-  "version": "1.0.0",
-  "description": "FedaPay integration for ReactJs applications",
-  "author": "FedaPay",
-  "license": "MIT",
-  "repository": "https://github.com/fedapay/fedapay-reactjs",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
-},
+  },
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "prop-types": "^15.8.1",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
   
   "scripts": {
     "build": "rollup -c && npm run copy",
     "start": "rollup -c -w",
     "copy": "node src/tools/copy-package.js",
     "prepare": "npm run build",
-    "link-lib": "npm link && cd example && npm link fedapay-reactjs",
-    "install-example": "cd example && npm install",
-    "start-example": "cd example && npm run start"
+    "link-lib": "npm link && cd project && npm link fedapay-reactjs",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "peerDependencies": {
-    "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@svgr/rollup": "^8.1.0",
-    "@types/react": "^18.3.5",
+    "@types/react": "^18.3.7",
     "@types/react-dom": "^18.3.0",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
@@ -37,7 +55,7 @@
     "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rollup": "^4.21.3",
+    "rollup": "^2.79.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
