@@ -1,73 +1,33 @@
 {
   "name": "fedapay-reactjs",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "FedaPay integration for ReactJs applications",
   "author": "FedaPay",
   "license": "MIT",
   "repository": "https://github.com/fedapay/fedapay-reactjs",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "jsnext:main": "dist/index.es.js",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
   "engines": {
     "node": ">=8",
     "npm": ">=5"
   },
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "prop-types": "^15.8.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
-  
   "scripts": {
-    "build": "rollup -c && npm run copy",
-    "start": "rollup -c -w",
-    "copy": "node src/tools/copy-package.js",
-    "prepare": "npm run build",
-    "link-lib": "npm link && cd project && npm link fedapay-reactjs",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "prepublishOnly": "yarn build"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@svgr/rollup": "^8.1.0",
-    "@types/react": "^18.3.7",
-    "@types/react-dom": "^18.3.0",
-    "babel-core": "^6.26.3",
-    "babel-runtime": "^6.26.0",
-    "cross-env": "^7.0.3",
-    "gh-pages": "^6.1.1",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rollup": "^2.79.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-typescript2": "^0.36.0",
-    "rollup-plugin-url": "^3.0.1",
-    "typescript": "^5.6.2"
+    "typescript": "^4.9.5"
   },
   "files": [
     "dist"
